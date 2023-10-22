@@ -27,7 +27,7 @@ function error() {
 }
     return (
                 <div>
-                    <p>Latitude: {lat}  Longitude: {long}</p>
+                    <p>Your location is Latitude: {lat}  Longitude: {long}</p>
                 </div>
     );
 }

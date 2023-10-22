@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from 'react';
+import LocationGrabber from "./LocationGrabber";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <LocationGrabber/>
   );
+}
+
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(success, error);
+
+} else {
+  console.log("Geolocation not supported");
+}
+
+function success(position) {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+  console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+  return [latitude, longitude]
+}
+
+function error() {
+  console.log("Unable to retrieve your location");
 }
 
 export default App;

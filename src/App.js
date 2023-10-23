@@ -1,28 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import LocationGrabber from "./LocationGrabber";
+import UserSpace from "./UserSpace";
+import RequestMeet from "./RequestMeet";
 function App() {
   return (
-      <LocationGrabber/>
+      <div className="App">
+        <LocationGrabber/>
+        <div className="Content">
+        </div>
+          <div>
+              <RequestMeet/>
+          </div>
+      </div>
   );
-}
-
-
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(success, error);
-
-} else {
-  console.log("Geolocation not supported");
-}
-
-function success(position) {
-  const latitude = position.coords.latitude;
-  const longitude = position.coords.longitude;
-  console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-  return [latitude, longitude]
-}
-
-function error() {
-  console.log("Unable to retrieve your location");
 }
 
 export default App;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function LocationGrabber() {
+function RequestMeet(){
     let [lat, setLat] = useState(null);
     let [long, setLong] = useState(null);
 
@@ -17,19 +17,24 @@ function LocationGrabber() {
         let coords = [latitude, longitude]
         setLat(coords[0]);
         setLong(coords[1]);
-        console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-        console.log(typeof latitude)
-        console.log(coords);
     }
 
+    console.log(lat);
+    console.log(long);
     function error() {
-        console.log("Unable to retrieve your location");
     }
+
+
+    function sendForGeoprocessing() {
+        alert('Sent for Geoprocessing');
+    }
+
     return (
         <div>
-            <p>Your location is Latitude: {lat}  Longitude: {long}</p>
+                <button onClick={sendForGeoprocessing}> Request Meeting </button>
         </div>
     );
+
 }
 
-export default LocationGrabber;
+export default RequestMeet;

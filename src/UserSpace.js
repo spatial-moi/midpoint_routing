@@ -1,11 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+/*/
+function UserSpace(){
 
-class UserSpace extends React.Component {
-    render() {
+    const [data, setData] = useState([{}])
+
+    useEffect(() => {
+        fetch("/midpoint").then(
+            res => res.json()
+        ).then(
+            data => {
+                setData(data)
+                console.log(data)
+            }
+        )
+        }, [])
+        // [] used so that it only runs once
         return (
-            <h1>User Location</h1>
+            <div>
+                {(typeof data.members === 'undefined') ? (
+                    <p>Loading...</p>
+                    ): (
+                        data.members.map((member, i) => (
+                    <p key={i}>{member}</p>
+                    ))
+                    )}
+            </div>
         )
     }
-}
+
 
 export default UserSpace;
+
+/*/
